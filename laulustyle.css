@@ -1,0 +1,177 @@
+/* BODY */
+
+body {
+	background-color: #CCC;		
+	width: 100%;
+	margin: 0;
+	padding: 0;	
+	font-size:100%;
+}
+
+/*  CONTENT  */
+
+.content {
+	margin-top:0;
+	width:100%;
+	
+	margin-left: auto;
+	margin-right:auto;
+	
+
+}
+/*    LOGO    */
+.logo {
+	width: 98%;
+	padding:1%;
+	background-color:#383838;
+	display:block;
+	float:left;
+	
+	
+}
+/*  HEADER   */
+header {
+	width: 98%;
+	padding:1%;
+	display:block;
+	float:left;
+	background-color: #fff;
+	
+}
+header.sticky {
+    position: fixed;
+	left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
+}
+
+/*   MENU   */
+
+#mainmenu { 
+	width:100%;
+	display:block;
+	float:left;
+	background: #222;
+	position: relative; 
+}
+#menuBtn { 
+	display:block;
+	right: 0; 
+	width: 100%;
+	background: #aaa; 
+	color: #fff;
+	line-height: 60px;
+	text-align: center; }
+#myMenu { 
+	display: none;
+ }
+#myMenu ul { 
+	width: 100%;
+	padding: 0;
+	margin: 0;  
+	}
+#myMenu li {
+	text-align: center;
+	height: 40px; 
+	line-height: 40px; 
+	background: #ddd;
+	width: 100%; 
+	margin: 0;
+	padding: 0; 
+	list-style: none;
+}
+
+.menu {
+	width: 98%;
+	padding:1%;
+	display: block;
+	float:left;
+	background-color: #fff;
+}
+
+/*   SONGBOX    */
+
+.songbox {
+	
+	width:	100%;
+	display: block;
+	float:left;
+	background-color: #fff;
+}
+
+.songname {
+	width: 98%;
+	padding:1%;
+	display: block;
+	float: left;
+}
+.songtext {
+	
+	width: 98%;
+	padding:1%;
+	display: block;
+	float:left;
+	text-align:center;
+	background-color: #fff;
+}
+
+
+.some {
+	
+	width: 98%;
+	padding:1%;
+	display: block;
+	float:left;
+	background-color: #fff;
+}	
+/*   SEARCH    */
+
+.searchRstAnn {
+	width: 98%;
+	padding:1%;
+	display: block;
+	float: left;
+}
+.searchRst {
+	width:100%;
+	margin-top:2%;
+	display: block;
+	float: left;
+	
+}
+.searchRstNr {
+	width: 98%;
+	padding:1%;
+	background-color:#33CCFF;
+	display: block;
+	float: left;
+}
+.searchRstWords {
+	
+	width: 98%;
+	padding:1%;
+	display: block;
+	float: left;
+	background-color: #fff;
+}
+
+/*    FOOTER    */
+footer {
+	display:block;
+	background-color: #fff;
+	width:98%;
+	float:left;
+	padding:1%;
+}
+@media screen and (min-width: 480px) {
+	.content {
+		width:70%;
+	}
+}
+
+@media screen and (min-width: 786px) {
+	.content {
+		width:50%;
+	}
+}
