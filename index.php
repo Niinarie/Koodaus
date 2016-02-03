@@ -15,7 +15,7 @@ $(document).ready(function(){
     });
 });
 $(document).ready(function() {
-var stickyNavTop = $('.nav').offset().top;
+var stickyNavTop = $('header').offset().top;
  
 var stickyNav = function(){
 var scrollTop = $(window).scrollTop();
