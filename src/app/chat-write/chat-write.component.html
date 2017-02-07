@@ -1,0 +1,11 @@
+<div class="input-group" *ngIf="user">
+  
+  <form #chatForm="ngForm" (ngSubmit)="saveMessage(chatForm.value)" class="form-inline" >
+     <label class="sr-only" for="inlineFormInputGroup">Username</label>
+  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+    <div class="input-group-addon">{{user.name}}:</div>
+  </div>
+  <input type="text" class="form-control" placeholder="..." name="msg_content" [(ngModel)]="message.msg_content" required>
+  <button class="btn btn btn-outline-primary" type="submit">Send!</button>
+  </form>
+</div>

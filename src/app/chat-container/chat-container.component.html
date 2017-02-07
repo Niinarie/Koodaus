@@ -1,0 +1,12 @@
+<div class="container">
+
+<app-channels-nav (changeChannel)="handleUserUpdated($event)"></app-channels-nav>
+
+<app-chat-window [channel]="active"></app-chat-window>
+
+<app-chat-write [channel]="active">></app-chat-write>
+
+<div><button type="button" class="btn btn-outline-danger centerbutton" (click)="logOut()">Log out</button></div>
+
+</div>
+

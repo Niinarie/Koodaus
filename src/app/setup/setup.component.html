@@ -1,0 +1,14 @@
+<div class="jumbotron vertical-center">
+   <div class="container">
+
+      <div class="input-group">
+        <form #userForm="ngForm" (ngSubmit)="setUsername(userForm.value)">
+        <input type="text" placeholder="Type username" name="name" [(ngModel)]="user.name" required>
+
+          <button class="btn btn-secondary" type="submit">Go!</button>
+
+        </form>
+      </div>
+
+   </div>
+</div>

@@ -1,0 +1,11 @@
+ <div class="jumbotron vertical-center">
+   <div class="container">
+ 
+ <ul class="list-group" *ngIf="data">
+ <li class="list-group-item" *ngFor="let channel of data">
+    <span class="nav-link" href="#" (click)="chooseChannel(channel)"> {{channel.ch_name}} </span>
+  </li> 
+</ul> 
+
+   </div>
+ </div>
