@@ -1,9 +1,13 @@
-<div class="jumbotron vertical-center">
-   <div class="container">
+  <div class="container container-nav logo setup">
+    <h2 class="align-text-bottom">chat</h2><img src="img/chat.png">
+  </div>
+   <div class="container setup">
+
+    <div class="center"> <h4>Pick a nick:</h4> </div>
 
       <div class="input-group">
-        <form #userForm="ngForm" (ngSubmit)="setUsername(userForm.value)">
-        <input type="text" placeholder="Type username" name="name" [(ngModel)]="user.name" required>
+        <form #userForm="ngForm" (ngSubmit)="setUsername(userForm.value)" class="form-inline">
+        <input type="text" class="form-control" placeholder="" name="name" [(ngModel)]="user.name" required pattern="[a-zA-Z ()_^äöåÄÖÅ0-9]*">
 
           <button class="btn btn-secondary" type="submit">Go!</button>
 
@@ -11,4 +15,3 @@
       </div>
 
    </div>
-</div>

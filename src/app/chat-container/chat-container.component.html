@@ -1,12 +1,28 @@
-<div class="container">
 
-<app-channels-nav (changeChannel)="handleUserUpdated($event)"></app-channels-nav>
+<div class="container container-nav">¨
+    <app-channels-nav (changeChannel)="handleUserUpdated($event)" [channels]="activeChannels"></app-channels-nav>
+    <app-channel-picker (newChannel)="addNewChannel($event)"></app-channel-picker>
+ </div>
 
-<app-chat-window [channel]="active"></app-chat-window>
-
-<app-chat-write [channel]="active">></app-chat-write>
-
-<div><button type="button" class="btn btn-outline-danger centerbutton" (click)="logOut()">Log out</button></div>
-
+<div class="container chatMessagesWindow">
+    
+    <div class="scrolling" angular2-auto-scroll lock-y-offset="5" observe-attributes>
+        <app-chat-window [messages]="messagesArray"></app-chat-window>
+    </div>
 </div>
+
+<div class="container chatwrite">
+    <app-chat-write (message)="relayMessage($event)"></app-chat-write>
+</div>
+
+
+<div>
+    <button type="button" class="btn btn-outline-secondary btn-sm centerbutton" (click)="logOut()">Log out</button>
+</div>
+
+<div id="logotext"><h2>chat</h2></div>
+
+<div id="copyright"><a href="http://www.freepik.com">Background Designed by Harryarts / Freepik</a></div>
+
+
 

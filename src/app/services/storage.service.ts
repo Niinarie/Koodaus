@@ -5,16 +5,24 @@ export class StorageService {
 
   constructor() { }
 
-  saveUser = (data: any) => {
+  saveUser(data: any)  {
     localStorage.setItem('user', data);
   }
 
-  getUser = () => {
+  getUser()  {
     return localStorage.getItem('user');
   }
 
-  emptyUser = () => {
+  emptyUser() {
     localStorage.removeItem('user');
+  }
+
+  saveActive(channel: string) {
+    localStorage.setItem('active', channel);
+  }
+
+  getActive() {
+    return localStorage.getItem('active');
   }
 
   addChannel(channel: Object) {
@@ -70,6 +78,8 @@ export class StorageService {
   }
 
   removeChannels () {
+    localStorage.removeItem('user');
+    localStorage.removeItem('active');
     localStorage.removeItem('channels');
   }
 }

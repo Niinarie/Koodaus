@@ -12,21 +12,24 @@ export class ChannelsNavComponent implements OnInit {
 
   @Output() changeChannel = new EventEmitter();
 
+  @Input() channels = [];
 
-
-  private data;
   private active;
 
   constructor(private chatService: ChatmessagesService, private storage: StorageService, private http: Http) {   }
 
-   changeActiveChannel(id: number) {
+   changeActiveChannel(id: string) {
      this.active = id;
      this.changeChannel.emit(this.active);
    }
 
   ngOnInit() {
-    this.data = this.storage.getChannels();
-    console.log(this.data);
+  //  this.active = localStorage.getItem('active');
   }
+
+   ngOnChanges () {
+      if (!!this.channels){
+
+      }}
 
 }

@@ -1,6 +1,8 @@
- <ul class="nav nav-tabs" *ngIf="data">
- <li class="nav-item" *ngFor="let channel of data">
-    <a class="nav-link" href="#" (click)="changeActiveChannel(channel.ch_id)">{{channel.ch_name}}</a>
+
+ <ul class="nav nav-tabs" *ngIf="channels">
+ <li class="nav-item" *ngFor="let channel of channels">
+    <a class="nav-link" (click)="changeActiveChannel(channel.ch_id)">{{channel.ch_name}}</a>
   </li> 
-  <li class="nav-item"> <a routerLink="/channel-setup"><i class="fa fa-plus nav-link" aria-hidden="true"></i></a></li>
 </ul> 
+
+ 

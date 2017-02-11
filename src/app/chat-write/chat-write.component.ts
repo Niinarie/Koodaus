@@ -1,6 +1,6 @@
 import { ChatmessagesService } from './../services/chatmessages.service';
 import { StorageService } from './../services/storage.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-chat-write',
@@ -10,28 +10,35 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ChatWriteComponent implements OnInit {
 
   private user: any = {};
-  private message: any = {};
-  private active: number;
+  private text: string = '';
 
-  @Input() channel: number;
+  @Input() channel;
+
+  @Output()
+  message: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private chatService: ChatmessagesService) { }
 
-  saveMessage(message: any) {
+  /*saveMessage(message: any) {
       message.msg_sender = this.user.name;
       message.msg_channel = this.channel;
       console.log(message);
       this.chatService.saveMessage(message);
       this.message.msg_content = '';
 
-  }
+  } */
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 
-   ngOnChanges () {
+  sendText(text) {
+    this.message.emit(text);
+    this.text= '';
+  }
+
+ /*  ngOnChanges () {
     if (!!this.channel){
-      }}
+      }} */
 
 }

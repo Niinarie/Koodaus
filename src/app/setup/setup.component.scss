@@ -1,12 +1,21 @@
-.vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
-}
 
 .input-group {
-    width: 80%;
-    margin: 0 auto;
+    display: block;
+    width:60%;
+    min-width: 250px;
+    margin:auto;
+}
+form input[type="text"] {
+background: transparent;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    outline: none;
+    padding: 0px 0px 0px 0px;
+
+}
+
+button {
+    margin-left: 3%;
+    box-shadow: 3px 5px #999;
+    border: 0px;
 }

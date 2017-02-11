@@ -1,8 +1,9 @@
 
 
-<ul>
-		<li *ngFor="let message of data">
-    {{message?.msg_date}} <b> {{message?.msg_sender}}: </b> {{message?.msg_content}} 
-		</li>
-	</ul>
 
+<ul *ngIf="messages">
+		<li *ngFor="let message of messages">
+	<div *ngIf="message.msg_highlight" class="highlight messagediv"><b>{{message.msg_sender}}</b> <sub>{{message.msg_date | date: 'HH:mm:ss'}}</sub><br/> {{message.msg_content }}</div>
+	<div *ngIf="!message.msg_highlight" class="messagediv"><b>{{message.msg_sender}}</b> <sub>{{message.msg_date | date: 'HH:mm:ss'}}</sub> <br/> {{message.msg_content }}</div>
+		</li>
+</ul>

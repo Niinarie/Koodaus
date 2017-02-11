@@ -1,0 +1,24 @@
+CREATE TABLE chat_channels
+(
+ch_id INT(10) NOT NULL AUTO_INCREMENT,
+ch_name VARCHAR(20) NOT NULL,
+PRIMARY KEY (ch_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+CREATE TABLE chat_messages
+(
+`msg_id` int(4) NOT NULL AUTO_INCREMENT,
+  `msg_content` varchar(400) COLLATE utf8_swedish_ci DEFAULT NULL,
+  `msg_sender` varchar(20) COLLATE utf8_swedish_ci DEFAULT NULL,
+  `msg_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `msg_channel` int(11) DEFAULT NULL,
+PRIMARY KEY (msg_id),
+FOREIGN KEY (msg_channel) REFERENCES chat_channels(ch_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+INSERT INTO chat_channels (ch_name) VALUES ('Mercury'),('Venus'),('Earth'),('Mars'),('Jupiter'),('Saturn'),('Uranus'),('Neptune'),('Pluto')
+
+SELECT ch_id,ch_name, count(chat_messages.msg_channel) AS count
+FROM chat_channels
+LEFT JOIN chat_messages
+ON chat_channels.ch_id=chat_messages.msg_channel GROUP BY chat_channels.ch_id

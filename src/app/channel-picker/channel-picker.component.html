@@ -1,0 +1,43 @@
+
+<!--<div id="channelpicker"> <i class="fa fa-plus nav-link" (click)="showSelector(true)" aria-hidden="true"></i>
+  <div class="selector row center-xs" *ngIf="isVisible">
+     <ul class="list-group" *ngIf="data">
+      <li class="list-group-item" *ngFor="let channel of data">
+      <span class="nav-link" href="#" (click)="chooseChannel(channel)"> {{channel.ch_name}} </span>
+      </li> 
+    </ul> 
+
+  </div>
+</div> -->
+
+ <ul class="nav nav-tabs">
+ <li class="nav-item">
+    <i class="fa fa-plus nav-link" data-toggle="modal" (click)="updateData()" data-target="#picker" aria-hidden="true"></i>
+  </li> 
+</ul> 
+
+
+<div class="modal fade" id="picker">
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+        <h4 class="modal-title">Pick a channel:</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <ul class="list-group" *ngIf="data">
+        <li class="list-group-item justify-content-between" *ngFor="let channel of data">
+        <span class="nav-link" href="#" (click)="chooseChannel(channel)" data-dismiss="modal" aria-label="Close"> {{channel.ch_name}} </span>
+        <span class="badge badge-default badge-pill">{{channel.count}}</span>
+        </li> 
+      </ul> 
+
+      <div class="modal-footer">
+        Custom channel seach
+      </div>
+    </div>
+ </div>
+</div>

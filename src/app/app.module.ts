@@ -1,9 +1,11 @@
-import { ChatService } from './services/chat.service';
+import { ChatserverService } from './services/chatserver.service';
+
 import { StorageService } from './services/storage.service';
 import { ChatmessagesService } from './services/chatmessages.service';
 import { AppComponent } from './app.component';
+import {APP_BASE_HREF} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
@@ -13,12 +15,25 @@ import { ChatContainerComponent } from './chat-container/chat-container.componen
 import { SetupComponent } from './setup/setup.component';
 import { RouterModule } from '@angular/router';
 import { ChannelSetupComponent } from './channel-setup/channel-setup.component';
-import { ChatComponent } from './chat/chat.component';
+import { ChannelPickerComponent } from './channel-picker/channel-picker.component';
+
+import * as io from 'socket.io-client';
+import { UsernamePipe } from './pipes/username.pipe';
+
+import {Angular2AutoScroll} from "angular2-auto-scroll/lib/angular2-auto-scroll.directive";
+
+
+
+
+
+/* new ProvidePlugin ({
+  io: 'socket.io-client',
+}); */
 
 const routeConfig = [
   {
     path: '',
-    component: ChatComponent
+    component: ChatContainerComponent
   },
   {
     path: 'setup',
@@ -43,18 +58,22 @@ const routeConfig = [
     ChatContainerComponent,
     SetupComponent,
     ChannelSetupComponent,
-    ChatComponent
+    ChannelPickerComponent,
+    UsernamePipe,
+    Angular2AutoScroll
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routeConfig),
+    RouterModule.forRoot(routeConfig)
   ],
   providers: [
     ChatmessagesService,
     StorageService,
-    ChatService
+    ChatserverService
+
   ],
   bootstrap: [AppComponent]
 })
