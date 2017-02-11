@@ -1,7 +1,9 @@
 
  <ul class="nav nav-tabs" *ngIf="channels">
  <li class="nav-item" *ngFor="let channel of channels">
-    <a class="nav-link" (click)="changeActiveChannel(channel.ch_id)">{{channel.ch_name}}</a>
+    <a class="nav-link" (click)="changeActiveChannel(channel.ch_id)">{{channel.ch_name}}
+    <span class="notices" *ngIf="messageNotifiers[channel.ch_id]">{{messageNotifiers[channel.ch_id]}}</span></a>
+    <div class="activechannel" *ngIf="activeChannel[channel.ch_id]"></div>
   </li> 
 </ul> 
 

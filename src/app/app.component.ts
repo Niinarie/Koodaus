@@ -14,11 +14,11 @@ export class AppComponent implements OnInit {
   title = 'app works!';
   private user: any;
 
-  constructor(private cRouter: Router) { }
+  constructor(private cRouter: Router, private storage: StorageService ) { }
 
   ngOnInit() {
-     localStorage.removeItem('user');
-        this.cRouter.navigate(['setup']);
+     this.storage.removeChannels();
+    this.cRouter.navigate(['setup']);
 
   }
 }

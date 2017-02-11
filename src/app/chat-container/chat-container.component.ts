@@ -29,13 +29,15 @@ export class ChatContainerComponent implements OnInit {
   private channel: number;
   private activeChannels;
   private messagesArray: Array<Object> = [];
+  private sendActive: Array<boolean> = [];
+  private notifyOfMessages: Array<number> = [];
 
   constructor(private cRouter: Router, private chatServer: ChatserverService, private storage: StorageService, private http: Http) { }
 
      relayMessage(event: string) {
 
        // http://stackoverflow.com/a/11446757
-        var time= (function () {
+          var time= (function () {
           var year = new Date(new Date().getFullYear().toString()).getTime();
           return function () {
             return Date.now() - year
@@ -61,6 +63,7 @@ export class ChatContainerComponent implements OnInit {
 
         // If no user in localstorage, point to setup
             this.active = localStorage.getItem('active');
+            this.sendActive[this.active] = true;
             this.user = JSON.parse(localStorage.getItem('user'));
 
             // get old messages from database
@@ -72,7 +75,6 @@ export class ChatContainerComponent implements OnInit {
 
            this.connection = this.chatServer.getOldMessages().subscribe(
               (res: Array<Object>) => {
-                console.log(res);
                 //this.messagesArray = res;
                 let user = JSON.parse(localStorage.getItem('user'));
                 let username = user['name'];
@@ -101,18 +103,22 @@ export class ChatContainerComponent implements OnInit {
                 // check if active channel got message,
                 // otherwise give notice that some hidden channel got it
                 if (this.active === response['msg_channel']) {
-                  console.log(response);
 
                     var n = response['msg_content'].search('@' + this.user['name']);
                     if (n >= 0) {
-                      response['msg_highlight'] = true;
+                          response['msg_highlight'] = true;
                     } else {
-                      response['msg_highlight'] = false;
+                          response['msg_highlight'] = false;
                     }
 
                     this.messagesArray.push(response);
                     console.log('oikea kanava sai viestin');
                 } else {
+                  if (this.notifyOfMessages[response['msg_channel']] == null) {
+                          this.notifyOfMessages[response['msg_channel']] = 1;
+                  } else {
+                          this.notifyOfMessages[response['msg_channel']] = this.notifyOfMessages[response['msg_channel']] + 1;
+                  }
                   console.log('muukanava sai viestin');
                 }
             });
@@ -131,6 +137,9 @@ export class ChatContainerComponent implements OnInit {
 
       handleUserUpdated(id: string) {
             this.active = id;
+            this.sendActive = [];
+             this.notifyOfMessages[id] = null;
+            this.sendActive[id] = true;
             localStorage.setItem('active', id);
             this.chatServer.askOldMessages(this.active);
         };

@@ -13,10 +13,14 @@ export class ChannelsNavComponent implements OnInit {
   @Output() changeChannel = new EventEmitter();
 
   @Input() channels = [];
+  @Input() messageNotifiers: Array<number> = [];
+  @Input() activeChannel: Array<boolean>;
+
 
   private active;
 
   constructor(private chatService: ChatmessagesService, private storage: StorageService, private http: Http) {   }
+
 
    changeActiveChannel(id: string) {
      this.active = id;

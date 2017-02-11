@@ -6,6 +6,7 @@ ul {
         border-radius: 2px;
         border: solid 1px #787;
         display: inline-block;
+        
   
         
 
@@ -14,6 +15,20 @@ ul {
             text-transform: uppercase;
             font-size: 80%;
             letter-spacing: 1px;
+            margin-right: 0;
+            display: inline-block;
         }
     }
+}
+
+.notices {
+   color: #fff;
+   display: inline-block;
+}
+
+.activechannel {
+    height: 6px;
+    width: 100%;
+    background-color: #82E0AA;
+    display: block;
 }

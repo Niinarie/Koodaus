@@ -39,13 +39,11 @@ export class ChatserverService {
   // get existing channels
   askChannels() {
     this.socket.emit('get-channels');
-    console.log("hei");
   }
 
   getChannels() {
     let observable = new Observable (observer => {
         this.socket.on('new-channels', (data) => {
-          console.log(data);
           observer.next(data);
         });
         return () => {
@@ -78,10 +76,8 @@ export class ChatserverService {
   }
 
   joinSavedChannels(savedChannels) {
-    console.log(savedChannels);
     for (let i = 0; i < savedChannels.length; i++) {      
         this.joinChannel(savedChannels[i].ch_id);
-        console.log(savedChannels[i].ch_id);
     }
   }
 

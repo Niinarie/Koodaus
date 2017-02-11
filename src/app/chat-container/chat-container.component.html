@@ -1,6 +1,6 @@
 
-<div class="container container-nav">¨
-    <app-channels-nav (changeChannel)="handleUserUpdated($event)" [channels]="activeChannels"></app-channels-nav>
+<div class="container container-nav" >
+    <app-channels-nav (changeChannel)="handleUserUpdated($event)" [channels]="activeChannels" [messageNotifiers]="notifyOfMessages" [activeChannel]="sendActive" ></app-channels-nav>
     <app-channel-picker (newChannel)="addNewChannel($event)"></app-channel-picker>
  </div>
 
